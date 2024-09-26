@@ -23,9 +23,9 @@
   <!-- Uncomment this if you would like to expose Logback JMX beans -->
   <!--jmxConfigurator /-->
 
-  <property name="zookeeper.console.threshold" value="INFO" />
+  <property name="zookeeper.console.threshold" value="ERROR" />
 
-  <property name="zookeeper.log.dir" value="." />
+  <property name="zookeeper.log.dir" value="/tmp/zookeeper" />
   <property name="zookeeper.log.file" value="zookeeper.log" />
   <property name="zookeeper.log.threshold" value="INFO" />
   <property name="zookeeper.log.maxfilesize" value="256MB" />
@@ -47,7 +47,7 @@
   <!--
     Add ROLLINGFILE to root logger to get log file output
   -->
-  <!--appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <File>${zookeeper.log.dir}/${zookeeper.log.file}</File>
     <encoder>
       <pattern>%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n</pattern>
@@ -62,7 +62,7 @@
     <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
       <MaxFileSize>${zookeeper.log.maxfilesize}</MaxFileSize>
     </triggeringPolicy>
-  </appender-->
+  </appender>
 
   <!--
     Add TRACEFILE to root logger to get log file output
